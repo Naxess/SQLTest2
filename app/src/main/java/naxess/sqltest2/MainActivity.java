@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAddData;
     Button btnViewAll;
     Button btnUpdateData;
+    Button btnDeleteData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddData = (Button)findViewById(R.id.button_add);
         btnViewAll = (Button)findViewById(R.id.button_show);
         btnUpdateData = (Button)findViewById(R.id.button_update);
+        btnDeleteData = (Button)findViewById(R.id.button_delete);
         AddData();
         viewAll();
         updateData();
@@ -115,6 +117,17 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Date not updated.", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+    }
+
+    public void deleteData()
+    {
+        btnDeleteData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
             }
         });
     }
