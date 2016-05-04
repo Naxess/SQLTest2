@@ -1,5 +1,7 @@
 package naxess.sqltest2;
 
+import android.app.AlertDialog;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText editFirstName, editLastName, editGrades;
     Button btnAddData;
+    Button btnViewAll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         editLastName = (EditText)findViewById(R.id.lastname);
         editGrades = (EditText)findViewById(R.id.grades);
         btnAddData = (Button)findViewById(R.id.button_add);
+        btnViewAll = (Button)findViewById(R.id.button_show);
         AddData();
+        viewAll();
     }
 
     public void AddData()
@@ -58,6 +63,42 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void viewAll()
+    {
+        btnViewAll.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Cursor res = myDb.getAllData();
+                if(res.getCount() == 0)
+                {
+                    //Toast.makeText(getApplicationContext(), "Data", Toast.LENGTH_LONG).show();
+                    showMessage("Error", "No data found.");
+                    return;
+                }
+                StringBuffer buffer = new StringBuffer();
+                while(res.moveToNext())
+                {
+                    buffer.append("Id: "+ res.getString(0)+"\n");    //0 = id column, 1 = first name column, etc...
+                    buffer.append("First Name: "+res.getString(1)+"\n");
+                    buffer.append("Last Name: "+res.getString(2)+"\n");
+                    buffer.append("Grades: "+res.getString(3)+"\n");
+                }
+                showMessage("Data",buffer.toString());
+            }
+        });
+    }
+
+    public void showMessage(String title, String message)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 
     @Override
