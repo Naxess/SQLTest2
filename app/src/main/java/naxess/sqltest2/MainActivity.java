@@ -48,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
         btnViewAll = (Button)findViewById(R.id.button_show);
         btnUpdateData = (Button)findViewById(R.id.button_update);
         btnDeleteData = (Button)findViewById(R.id.button_delete);
-        AddData();
+        addData();
         viewAll();
         updateData();
+        deleteData();
     }
 
-    public void AddData()
+    public void addData()
     {
         btnAddData.setOnClickListener(new View.OnClickListener()
         {
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 if(isInserted == true)
                 {
                     Toast.makeText(getApplicationContext(), "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Data has not been inserted.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -111,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
                         editGrades.getText().toString());
                 if(isUpdated == true)
                 {
-                    Toast.makeText(getApplicationContext(),"Date Updated Successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Data updated.", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Date not updated.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Data not updated.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -127,7 +132,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                Integer isDeleted = myDb.deleteData(editId.getText().toString());
+                if(isDeleted > 0)
+                {
+                    Toast.makeText(getApplicationContext(),"Data deleted.", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Data not deleted.", Toast.LENGTH_LONG).show();
 
+                }
             }
         });
     }
