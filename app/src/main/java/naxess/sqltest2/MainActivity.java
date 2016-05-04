@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Id: "+ res.getString(0)+"\n");    //0 = id column, 1 = first name column, etc...
                     buffer.append("First Name: "+res.getString(1)+"\n");
                     buffer.append("Last Name: "+res.getString(2)+"\n");
-                    buffer.append("Grades: "+res.getString(3)+"\n\n");
+                    buffer.append("Grade(s): "+res.getString(3)+"\n\n");
                 }
                 showMessage("Data",buffer.toString());
             }
