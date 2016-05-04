@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnViewAll;
     Button btnUpdateData;
     Button btnDeleteData;
+    Button btnClearText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
         btnViewAll = (Button)findViewById(R.id.button_show);
         btnUpdateData = (Button)findViewById(R.id.button_update);
         btnDeleteData = (Button)findViewById(R.id.button_delete);
+        btnClearText = (Button)findViewById(R.id.button_clear);
         addData();
         viewAll();
         updateData();
         deleteData();
+        clearAllText();
     }
 
     public void addData()
@@ -142,6 +145,19 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Data not deleted.", Toast.LENGTH_LONG).show();
 
                 }
+            }
+        });
+    }
+
+    public void clearAllText()
+    {
+        btnClearText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editFirstName.setText("");
+                editLastName.setText("");
+                editGrades.setText("");
+                editId.setText("");
             }
         });
     }
