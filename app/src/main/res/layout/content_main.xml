@@ -13,7 +13,7 @@
     tools:showIn="@layout/activity_main">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:hint="First Name"
@@ -22,7 +22,7 @@
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:hint="Last Name"
@@ -32,7 +32,7 @@
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:hint="Grades"
@@ -47,11 +47,16 @@
         android:text="AddData"
         android:id="@+id/button_add"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/button_show"
+        android:layout_alignEnd="@+id/button_show"
+        android:layout_alignLeft="@+id/button_show"
+        android:layout_alignStart="@+id/button_show" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ShowData"
-        android:id="@+id/button_show" />
+        android:id="@+id/button_show"
+        android:layout_below="@+id/button_add"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
