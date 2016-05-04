@@ -54,4 +54,16 @@ public class DatabaseHelper extends SQLiteOpenHelper
         Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
         return res;
     }
+
+    public boolean updateData(String id, String firstName, String lastName, String grades)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, id);
+        contentValues.put(COL_2, firstName);
+        contentValues.put(COL_3, lastName);
+        contentValues.put(COL_4, grades);
+        db.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id });
+        return true;
+    }
 }

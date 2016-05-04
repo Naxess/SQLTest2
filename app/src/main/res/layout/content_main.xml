@@ -41,22 +41,45 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AddData"
-        android:id="@+id/button_add"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/button_show"
-        android:layout_alignEnd="@+id/button_show"
-        android:layout_alignLeft="@+id/button_show"
-        android:layout_alignStart="@+id/button_show" />
+        android:id="@+id/id"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:hint="Id"
+        android:layout_below="@+id/grades"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/grades"
+        android:layout_alignEnd="@+id/grades" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ShowData"
+        android:text="Add Data"
+        android:id="@+id/button_add"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button_update"
+        android:layout_alignStart="@+id/button_update"
+        android:layout_alignRight="@+id/button_update"
+        android:layout_alignEnd="@+id/button_update" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Data"
         android:id="@+id/button_show"
         android:layout_below="@+id/button_add"
+        android:layout_alignRight="@+id/button_add"
+        android:layout_alignEnd="@+id/button_add"
+        android:layout_alignLeft="@+id/button_add"
+        android:layout_alignStart="@+id/button_add" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Data"
+        android:id="@+id/button_update"
+        android:layout_below="@+id/button_show"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

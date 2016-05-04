@@ -17,9 +17,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper myDb;
-    EditText editFirstName, editLastName, editGrades;
+    EditText editFirstName, editLastName, editGrades, editId;
     Button btnAddData;
     Button btnViewAll;
+    Button btnUpdateData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +42,13 @@ public class MainActivity extends AppCompatActivity {
         editFirstName = (EditText)findViewById(R.id.firstname);
         editLastName = (EditText)findViewById(R.id.lastname);
         editGrades = (EditText)findViewById(R.id.grades);
+        editId = (EditText)findViewById(R.id.id);
         btnAddData = (Button)findViewById(R.id.button_add);
         btnViewAll = (Button)findViewById(R.id.button_show);
+        btnUpdateData = (Button)findViewById(R.id.button_update);
         AddData();
         viewAll();
+        updateData();
     }
 
     public void AddData()
@@ -85,9 +89,32 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Id: "+ res.getString(0)+"\n");    //0 = id column, 1 = first name column, etc...
                     buffer.append("First Name: "+res.getString(1)+"\n");
                     buffer.append("Last Name: "+res.getString(2)+"\n");
-                    buffer.append("Grades: "+res.getString(3)+"\n");
+                    buffer.append("Grades: "+res.getString(3)+"\n\n");
                 }
                 showMessage("Data",buffer.toString());
+            }
+        });
+    }
+
+    public void updateData()
+    {
+        btnUpdateData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                boolean isUpdated = myDb.updateData(editId.getText().toString(),
+                        editFirstName.getText().toString(),
+                        editLastName.getText().toString(),
+                        editGrades.getText().toString());
+                if(isUpdated == true)
+                {
+                    Toast.makeText(getApplicationContext(),"Date Updated Successfully", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Date not updated.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
